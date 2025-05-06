@@ -1,22 +1,23 @@
-// app/page.tsx
-
 'use client';
 
 import React, { useState } from 'react';
 import Button from './components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from './components/ui/card';
 import { Sun, Shield, RotateCw } from 'lucide-react';
 
-// Define the type for the state
 interface StatusState {
   status: string;
 }
 
 export default function Home() {
-  // Initialize state with a type and default value
   const [statusState, setStatusState] = useState<StatusState | null>(null);
 
-  // Function to update the status
   const updateStatus = (newStatus: string) => {
     setStatusState({ status: newStatus });
   };
@@ -26,11 +27,13 @@ export default function Home() {
       <h1 className="text-4xl font-bold mb-6 text-center">Welcome to SolarSense</h1>
 
       {/* Status Section */}
-      <div className="mb-8">
-        <h2 className="text-2xl font-semibold">Current Status: </h2>
-        <p className="text-lg">{statusState?.status || 'No status set'}</p>
-        <Button label="Activate Solar Panel" onClick={() => updateStatus('Solar Panel Active')} />
-        <Button label="Deactivate Solar Panel" onClick={() => updateStatus('Solar Panel Inactive')} />
+      <div className="mb-8 text-center">
+        <h2 className="text-2xl font-semibold mb-2">Current Status:</h2>
+        <p className="text-lg mb-4">{statusState?.status || 'No status set'}</p>
+        <div className="flex gap-4 justify-center">
+          <Button label="Activate Solar Panel" onClick={() => updateStatus('Solar Panel Active')} />
+          <Button label="Deactivate Solar Panel" onClick={() => updateStatus('Solar Panel Inactive')} />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl">
