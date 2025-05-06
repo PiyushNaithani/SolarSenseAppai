@@ -1,13 +1,15 @@
-// components/ui/button.tsx
 import React from 'react';
+import clsx from 'clsx';
 
-const Button = ({ label, onClick }: { label: string; onClick: () => void }) => {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+const Button: React.FC<ButtonProps> = ({ className, children, ...props }) => {
   return (
     <button
-      className="px-4 py-2 bg-blue-500 text-white rounded-md"
-      onClick={onClick}
+      className={clsx("bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded", className)}
+      {...props}
     >
-      {label}
+      {children}
     </button>
   );
 };
